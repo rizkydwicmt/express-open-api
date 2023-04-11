@@ -1,0 +1,1504 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Viuit Open API",
+    "contact": {}
+  },
+  "host": "127.0.0.1:3000",
+  "basePath": "/api/v1",
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/oauth/token": {
+      "post": {
+        "summary": "Get Token",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "GetToken",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [{
+            "name": "grant_type",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/%5B200%5DGetToken"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "access_token": "512de0d128e59f4d415fbe047dc5b88f19ea524e",
+                "token_type": "Bearer",
+                "expires_in": 85999
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "11e75467-d553-43ce-aea3-eb1f5b84f17b"
+              },
+              "cache-control": {
+                "type": "string",
+                "default": "no-store"
+              },
+              "pragma": {
+                "type": "string",
+                "default": "no-cache"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "100"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"64-TyUdGf1fd6m6OQKFBljvT8pCGyQ\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:01:01 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/%5B400%5DGetToken1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "error": "invalid_request",
+                "error_description": "Invalid request: content must be application/x-www-form-urlencoded"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "c3f9efa6-de51-4dc0-8f80-8675ab7d9c5b"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "116"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"74-ItyO3nOMyQYsOHRr8cq6NA9plrg\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:47:38 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/%5B401%5DGetToken1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "error": "invalid_client",
+                "error_description": "Invalid client: client is invalid"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "2a324172-d8db-4875-8ec0-d80efa678a8b"
+              },
+              "www-authenticate": {
+                "type": "string",
+                "default": "Basic realm=\"Service\""
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "82"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"52-DZPbDRvBPPFxkONC6SHZDMipJJQ\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:48:09 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        },
+        "security": [{
+          "basic": []
+        }]
+      }
+    },
+    "/oauth/check": {
+      "post": {
+        "summary": "Check Token",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "CheckToken",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [{
+          "name": "authorization",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "description": ""
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/%5B200%5DCheckToken"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Valid Token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "57a0fd77-edfe-40a9-a3d9-fcd95499cf02"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "25"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"19-ODk1qnsJoqONr7LrYNcftnC1bqM\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:55:38 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/%5B401%5DCheckToken1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "Invalid Token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "5d60a483-ceb1-4a54-a6fe-226dc85e7faa"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "27"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"1b-ptDm3ggC53pgcLgMnSH4sPfBUYY\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:55:59 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth/check-health": {
+      "get": {
+        "summary": "Check Health",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "CheckHealth",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/core/u3/order-kurir/cek-ongkir": {
+      "post": {
+        "summary": "Check Ongkir Kurir",
+        "tags": [
+          "Core"
+        ],
+        "operationId": "CheckOngkirKurir",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [{
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CheckOngkirKurirRequest"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "",
+            "example": "Bearer xxxxx"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/%5B200%5DCheckOngkirKurir"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "nama_pengirim": "Rizky miftaqul",
+                "no_hp_pengirim": "089677498927",
+                "jarak": 17000,
+                "titik_penjemputan": "-7.32075,112.7498405",
+                "nama_tempat_penjemputan": "Tenggilis Square M24 No. 1",
+                "alamat_penjemputan": "Tenggilis Square M24 No. 1, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60292, Indonesia",
+                "detail_lokasi_penjemputan": "",
+                "ongkos_kirim_normal": 29750,
+                "ongkos_kirim_coret": 30750,
+                "jarak_tempuh_normal": 17000,
+                "jarak_tempuh_optimal": 17000,
+                "waktu_tempuh_normal": 2248,
+                "waktu_tempuh_optimal": 2248,
+                "nama_kota": "Kota Surabaya",
+                "id_kota": 264,
+                "id_transaksi": 25243882,
+                "id_ongkir": 49,
+                "kode_promo": "KURIRSAGU",
+                "komisi_promo": "",
+                "rincian": {
+                  "biaya_ongkir_normal": 30750,
+                  "biaya_ongkir_minimal": 6700,
+                  "biaya_ongkir_dengan_subsidi": 6700,
+                  "biaya_ongkir_after_diskon": 29750,
+                  "biaya_ongkir_final": 31719,
+                  "biaya_layanan": "500",
+                  "biaya_tambahan": 0,
+                  "pendapatan_normal_driver": 26961,
+                  "pendapatan_bersih_platform": 4194,
+                  "pendapatan_netto_platform": 4258,
+                  "pendapatan_gross_platform": 4758,
+                  "potongan_diskon_ongkir_user": 0,
+                  "potongan_diskon_belanja_user": 0,
+                  "biaya_payment_gateway": 500,
+                  "raw_biaya_payment_gateway": 469,
+                  "biaya_ongkir_dengan_diskon": 0
+                },
+                "diskon_potongan_user": 1000,
+                "total": 30719,
+                "fee_map": 969,
+                "fee_map_normal": 500,
+                "total_komisi": 4194,
+                "komisi_platform": 4258,
+                "komisi_driver": 26961,
+                "pendapatan_kotor": 4758,
+                "pendapatan_bersih": 4194,
+                "fee_thread_party": 469,
+                "id_setting_fee": 47,
+                "radius_dispatch": "5",
+                "id_jenis_pembayaran": 6,
+                "nama_jenis_pembayaran": "DANA",
+                "id_jenis_layanan": 2,
+                "nama_jenis_layanan": "SEND",
+                "detail_ongkos_kirim": [{
+                    "nama_penerima": "Rizky miftaqul",
+                    "no_hp_penerima": "089677498927",
+                    "titik_perjalanan": "-7.32075,112.7498405",
+                    "tipe": "send",
+                    "nama_lokasi": "Tenggilis Square M24 No. 1",
+                    "alamat_lokasi": "Tenggilis Square M24 No. 1, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60292, Indonesia",
+                    "detail_lokasi": "",
+                    "jarak_tempuh_normal": 0,
+                    "durasi_tempuh_normal": 0,
+                    "jenis_barang": "",
+                    "id_perjalanan": 1,
+                    "starting_point": "-7.32075,112.7498405",
+                    "catatan_barang": "",
+                    "qty_barang": 0,
+                    "titik_pengiriman": "-7.32075,112.7498405",
+                    "id_destination": 1,
+                    "urutan_pengiriman": 1
+                  },
+                  {
+                    "nama_penerima": "Amal",
+                    "no_hp_penerima": "0895395068593",
+                    "titik_perjalanan": "-7.2173597,112.7335961",
+                    "tipe": "send",
+                    "nama_lokasi": "Rumah Amal",
+                    "alamat_lokasi": "Jalan Teluk Kumai Barat, North Perak, Surabaya City, East Java, Indonesia",
+                    "detail_lokasi": "",
+                    "jarak_tempuh_normal": 17000,
+                    "durasi_tempuh_normal": 2248,
+                    "jenis_barang": "Iwksksk",
+                    "id_perjalanan": 2,
+                    "starting_point": "-7.32075,112.7498405",
+                    "catatan_barang": "",
+                    "qty_barang": 0,
+                    "titik_pengiriman": "-7.2173597,112.7335961",
+                    "id_destination": 2,
+                    "urutan_pengiriman": 2
+                  }
+                ],
+                "destinations": [{
+                  "alamat_pengiriman": "Jalan Teluk Kumai Barat, North Perak, Surabaya City, East Java, Indonesia",
+                  "catatan_barang": "",
+                  "deskripsi_barang": "Iwksksk",
+                  "detail_lokasi_pengiriman": "",
+                  "jarak_tempuh": "0",
+                  "jenis_barang": "Iwksksk",
+                  "nama_penerima": "Amal",
+                  "nama_tempat_pengiriman": "Rumah Amal",
+                  "no_telp": "0895395068593",
+                  "qty_barang": 0,
+                  "starting_point": "-7.32075,112.7498405",
+                  "titik_pengiriman": "-7.2173597,112.7335961",
+                  "urutan_pengiriman": 1,
+                  "waktu_tempuh": 0
+                }],
+                "total_destination": 1,
+                "detail_voucher": {},
+                "distances": [],
+                "id_promo": 2725,
+                "id_owner_nft": 10046
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "abc05eb0-6d80-4742-9cd6-94020d359f8e"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "3121"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"c31-UJJlJi5NL0SJvPjBJLiAdytS/eQ\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:46:09 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/%5B400%5DCheckOngkirKurir1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "message": "origin, destination, nama_kota, nama_lokasi, detail_lokasi, detail_lokasi, id_jenis_layanan are required"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "fb9a0336-def9-4b44-8422-3644f2722785"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "118"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"76-GOeCDyMWnTAo2TosxTw32qvHw/Q\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:52:21 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "ViuIt All Rights Reserved"
+              },
+              "X-Request-ID": {
+                "type": "string",
+                "default": "beac96d3-6d0b-4945-a1ab-3c7e3a67f7cb"
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 01 Mar 2023 08:45:06 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "0"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "[200]GetToken": {
+      "title": "[200] Get Token",
+      "example": {
+        "access_token": "512de0d128e59f4d415fbe047dc5b88f19ea524e",
+        "token_type": "Bearer",
+        "expires_in": 85999
+      },
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "token_type": {
+          "type": "string"
+        },
+        "expires_in": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "access_token",
+        "token_type",
+        "expires_in"
+      ]
+    },
+    "[400]GetToken1": {
+      "title": "[400] Get Token",
+      "example": {
+        "error": "invalid_request",
+        "error_description": "Invalid request: content must be application/x-www-form-urlencoded"
+      },
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "error_description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "error",
+        "error_description"
+      ]
+    },
+    "[401]GetToken1": {
+      "title": "[401] Get Token",
+      "example": {
+        "error": "invalid_client",
+        "error_description": "Invalid client: client is invalid"
+      },
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "error_description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "error",
+        "error_description"
+      ]
+    },
+    "[200]CheckToken": {
+      "title": "[200] Check Token",
+      "example": {
+        "message": "Valid Token"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "[401]CheckToken1": {
+      "title": "[401] Check Token",
+      "example": {
+        "message": "Invalid Token"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "CheckOngkirKurirRequest": {
+      "title": "[Request] Check Ongkir Kurir",
+      "example": {
+        "alamat_lokasi": "Tenggilis Square M24 No. 1, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60292, Indonesia",
+        "alamat_penjemputan": "Tenggilis Square M24 No. 1, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60292, Indonesia",
+        "destination": [{
+          "alamat_pengiriman": "Jalan Teluk Kumai Barat, North Perak, Surabaya City, East Java, Indonesia",
+          "catatan_barang": "",
+          "deskripsi_barang": "Iwksksk",
+          "detail_lokasi_pengiriman": "",
+          "jarak_tempuh": "0",
+          "jenis_barang": "Iwksksk",
+          "nama_penerima": "Amal",
+          "nama_tempat_pengiriman": "Rumah Amal",
+          "no_telp": "0895395068593",
+          "qty_barang": 0,
+          "starting_point": "-7.32075,112.7498405",
+          "titik_pengiriman": "-7.2173597,112.7335961",
+          "urutan_pengiriman": 1,
+          "waktu_tempuh": 0
+        }],
+        "detail_lokasi": "",
+        "detail_lokasi_penjemputan": "",
+        "id_jenis_layanan": 2,
+        "id_kota": 264,
+        "id_promo": 2725,
+        "id_transaksi": 25243882,
+        "jenis_pembayaran": 6,
+        "nama_kota": "Kota Surabaya",
+        "nama_lokasi": "Tenggilis Square M24 No. 1",
+        "nama_pengirim": "Rizky miftaqul",
+        "nama_tempat_penjemputan": "Tenggilis Square M24 No. 1",
+        "no_hp_pengirim": "089677498927",
+        "origin": "-7.32075,112.7498405",
+        "primary_credential": {
+          "id_kota": 264,
+          "id_user": 12600,
+          "location": "-7.3207505,112.7498343",
+          "uuid": "ffffffff-f724-bd07-0000-000051093dbe",
+          "version_code": "87",
+          "version_name": "2.2.2.dev",
+          "via": "ACI User"
+        },
+        "reff_id_user_partner": "12600",
+        "titik_penjemputan": "-7.32075,112.7498405"
+      },
+      "type": "object",
+      "properties": {
+        "alamat_lokasi": {
+          "type": "string"
+        },
+        "alamat_penjemputan": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Destination"
+          }
+        },
+        "detail_lokasi": {
+          "type": "string"
+        },
+        "detail_lokasi_penjemputan": {
+          "type": "string"
+        },
+        "id_jenis_layanan": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_kota": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_promo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_transaksi": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jenis_pembayaran": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nama_kota": {
+          "type": "string"
+        },
+        "nama_lokasi": {
+          "type": "string"
+        },
+        "nama_pengirim": {
+          "type": "string"
+        },
+        "nama_tempat_penjemputan": {
+          "type": "string"
+        },
+        "no_hp_pengirim": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "primary_credential": {
+          "$ref": "#/definitions/PrimaryCredential"
+        },
+        "reff_id_user_partner": {
+          "type": "string"
+        },
+        "titik_penjemputan": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "alamat_lokasi",
+        "alamat_penjemputan",
+        "destination",
+        "detail_lokasi",
+        "detail_lokasi_penjemputan",
+        "id_jenis_layanan",
+        "id_kota",
+        "id_promo",
+        "id_transaksi",
+        "jenis_pembayaran",
+        "nama_kota",
+        "nama_lokasi",
+        "nama_pengirim",
+        "nama_tempat_penjemputan",
+        "no_hp_pengirim",
+        "origin",
+        "primary_credential",
+        "reff_id_user_partner",
+        "titik_penjemputan"
+      ]
+    },
+    "Destination": {
+      "title": "[Subrequest] Destination",
+      "example": {
+        "alamat_pengiriman": "Jalan Teluk Kumai Barat, North Perak, Surabaya City, East Java, Indonesia",
+        "catatan_barang": "",
+        "deskripsi_barang": "Iwksksk",
+        "detail_lokasi_pengiriman": "",
+        "jarak_tempuh": "0",
+        "jenis_barang": "Iwksksk",
+        "nama_penerima": "Amal",
+        "nama_tempat_pengiriman": "Rumah Amal",
+        "no_telp": "0895395068593",
+        "qty_barang": 0,
+        "starting_point": "-7.32075,112.7498405",
+        "titik_pengiriman": "-7.2173597,112.7335961",
+        "urutan_pengiriman": 1,
+        "waktu_tempuh": 0
+      },
+      "type": "object",
+      "properties": {
+        "alamat_pengiriman": {
+          "type": "string"
+        },
+        "catatan_barang": {
+          "type": "string"
+        },
+        "deskripsi_barang": {
+          "type": "string"
+        },
+        "detail_lokasi_pengiriman": {
+          "type": "string"
+        },
+        "jarak_tempuh": {
+          "type": "string"
+        },
+        "jenis_barang": {
+          "type": "string"
+        },
+        "nama_penerima": {
+          "type": "string"
+        },
+        "nama_tempat_pengiriman": {
+          "type": "string"
+        },
+        "no_telp": {
+          "type": "string"
+        },
+        "qty_barang": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "starting_point": {
+          "type": "string"
+        },
+        "titik_pengiriman": {
+          "type": "string"
+        },
+        "urutan_pengiriman": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "waktu_tempuh": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "alamat_pengiriman",
+        "catatan_barang",
+        "deskripsi_barang",
+        "detail_lokasi_pengiriman",
+        "jarak_tempuh",
+        "jenis_barang",
+        "nama_penerima",
+        "nama_tempat_pengiriman",
+        "no_telp",
+        "qty_barang",
+        "starting_point",
+        "titik_pengiriman",
+        "urutan_pengiriman",
+        "waktu_tempuh"
+      ]
+    },
+    "PrimaryCredential": {
+      "title": "[Subrequest] Primary Credential",
+      "example": {
+        "id_kota": 264,
+        "id_user": 12600,
+        "location": "-7.3207505,112.7498343",
+        "uuid": "ffffffff-f724-bd07-0000-000051093dbe",
+        "version_code": "87",
+        "version_name": "2.2.2.dev",
+        "via": "ACI User"
+      },
+      "type": "object",
+      "properties": {
+        "id_kota": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_user": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "location": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string"
+        },
+        "version_code": {
+          "type": "string"
+        },
+        "version_name": {
+          "type": "string"
+        },
+        "via": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id_kota",
+        "id_user",
+        "location",
+        "uuid",
+        "version_code",
+        "version_name",
+        "via"
+      ]
+    },
+    "[200]CheckOngkirKurir": {
+      "title": "[200] Check Ongkir Kurir",
+      "example": {
+        "nama_pengirim": "Rizky miftaqul",
+        "no_hp_pengirim": "089677498927",
+        "jarak": 17000,
+        "titik_penjemputan": "-7.32075,112.7498405",
+        "nama_tempat_penjemputan": "Tenggilis Square M24 No. 1",
+        "alamat_penjemputan": "Tenggilis Square M24 No. 1, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60292, Indonesia",
+        "detail_lokasi_penjemputan": "",
+        "ongkos_kirim_normal": 29750,
+        "ongkos_kirim_coret": 30750,
+        "jarak_tempuh_normal": 17000,
+        "jarak_tempuh_optimal": 17000,
+        "waktu_tempuh_normal": 2248,
+        "waktu_tempuh_optimal": 2248,
+        "nama_kota": "Kota Surabaya",
+        "id_kota": 264,
+        "id_transaksi": 25243882,
+        "id_ongkir": 49,
+        "kode_promo": "KURIRSAGU",
+        "komisi_promo": "",
+        "rincian": {
+          "biaya_ongkir_normal": 30750,
+          "biaya_ongkir_minimal": 6700,
+          "biaya_ongkir_dengan_subsidi": 6700,
+          "biaya_ongkir_after_diskon": 29750,
+          "biaya_ongkir_final": 31719,
+          "biaya_layanan": "500",
+          "biaya_tambahan": 0,
+          "pendapatan_normal_driver": 26961,
+          "pendapatan_bersih_platform": 4194,
+          "pendapatan_netto_platform": 4258,
+          "pendapatan_gross_platform": 4758,
+          "potongan_diskon_ongkir_user": 0,
+          "potongan_diskon_belanja_user": 0,
+          "biaya_payment_gateway": 500,
+          "raw_biaya_payment_gateway": 469,
+          "biaya_ongkir_dengan_diskon": 0
+        },
+        "diskon_potongan_user": 1000,
+        "total": 30719,
+        "fee_map": 969,
+        "fee_map_normal": 500,
+        "total_komisi": 4194,
+        "komisi_platform": 4258,
+        "komisi_driver": 26961,
+        "pendapatan_kotor": 4758,
+        "pendapatan_bersih": 4194,
+        "fee_thread_party": 469,
+        "id_setting_fee": 47,
+        "radius_dispatch": "5",
+        "id_jenis_pembayaran": 6,
+        "nama_jenis_pembayaran": "DANA",
+        "id_jenis_layanan": 2,
+        "nama_jenis_layanan": "SEND",
+        "detail_ongkos_kirim": [{
+            "nama_penerima": "Rizky miftaqul",
+            "no_hp_penerima": "089677498927",
+            "titik_perjalanan": "-7.32075,112.7498405",
+            "tipe": "send",
+            "nama_lokasi": "Tenggilis Square M24 No. 1",
+            "alamat_lokasi": "Tenggilis Square M24 No. 1, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60292, Indonesia",
+            "detail_lokasi": "",
+            "jarak_tempuh_normal": 0,
+            "durasi_tempuh_normal": 0,
+            "jenis_barang": "",
+            "id_perjalanan": 1,
+            "starting_point": "-7.32075,112.7498405",
+            "catatan_barang": "",
+            "qty_barang": 0,
+            "titik_pengiriman": "-7.32075,112.7498405",
+            "id_destination": 1,
+            "urutan_pengiriman": 1
+          },
+          {
+            "nama_penerima": "Amal",
+            "no_hp_penerima": "0895395068593",
+            "titik_perjalanan": "-7.2173597,112.7335961",
+            "tipe": "send",
+            "nama_lokasi": "Rumah Amal",
+            "alamat_lokasi": "Jalan Teluk Kumai Barat, North Perak, Surabaya City, East Java, Indonesia",
+            "detail_lokasi": "",
+            "jarak_tempuh_normal": 17000,
+            "durasi_tempuh_normal": 2248,
+            "jenis_barang": "Iwksksk",
+            "id_perjalanan": 2,
+            "starting_point": "-7.32075,112.7498405",
+            "catatan_barang": "",
+            "qty_barang": 0,
+            "titik_pengiriman": "-7.2173597,112.7335961",
+            "id_destination": 2,
+            "urutan_pengiriman": 2
+          }
+        ],
+        "destinations": [{
+          "alamat_pengiriman": "Jalan Teluk Kumai Barat, North Perak, Surabaya City, East Java, Indonesia",
+          "catatan_barang": "",
+          "deskripsi_barang": "Iwksksk",
+          "detail_lokasi_pengiriman": "",
+          "jarak_tempuh": "0",
+          "jenis_barang": "Iwksksk",
+          "nama_penerima": "Amal",
+          "nama_tempat_pengiriman": "Rumah Amal",
+          "no_telp": "0895395068593",
+          "qty_barang": 0,
+          "starting_point": "-7.32075,112.7498405",
+          "titik_pengiriman": "-7.2173597,112.7335961",
+          "urutan_pengiriman": 1,
+          "waktu_tempuh": 0
+        }],
+        "total_destination": 1,
+        "detail_voucher": {},
+        "distances": [],
+        "id_promo": 2725,
+        "id_owner_nft": 10046
+      },
+      "type": "object",
+      "properties": {
+        "nama_pengirim": {
+          "type": "string"
+        },
+        "no_hp_pengirim": {
+          "type": "string"
+        },
+        "jarak": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "titik_penjemputan": {
+          "type": "string"
+        },
+        "nama_tempat_penjemputan": {
+          "type": "string"
+        },
+        "alamat_penjemputan": {
+          "type": "string"
+        },
+        "detail_lokasi_penjemputan": {
+          "type": "string"
+        },
+        "ongkos_kirim_normal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ongkos_kirim_coret": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jarak_tempuh_normal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jarak_tempuh_optimal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "waktu_tempuh_normal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "waktu_tempuh_optimal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nama_kota": {
+          "type": "string"
+        },
+        "id_kota": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_transaksi": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_ongkir": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "kode_promo": {
+          "type": "string"
+        },
+        "komisi_promo": {
+          "type": "string"
+        },
+        "rincian": {
+          "$ref": "#/definitions/Rincian"
+        },
+        "diskon_potongan_user": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fee_map": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fee_map_normal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total_komisi": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "komisi_platform": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "komisi_driver": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pendapatan_kotor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pendapatan_bersih": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fee_thread_party": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_setting_fee": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "radius_dispatch": {
+          "type": "string"
+        },
+        "id_jenis_pembayaran": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nama_jenis_pembayaran": {
+          "type": "string"
+        },
+        "id_jenis_layanan": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nama_jenis_layanan": {
+          "type": "string"
+        },
+        "detail_ongkos_kirim": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DetailOngkosKirim"
+          }
+        },
+        "destinations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Destination"
+          }
+        },
+        "total_destination": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "detail_voucher": {
+          "type": "object"
+        },
+        "distances": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id_promo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id_owner_nft": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "nama_pengirim",
+        "no_hp_pengirim",
+        "jarak",
+        "titik_penjemputan",
+        "nama_tempat_penjemputan",
+        "alamat_penjemputan",
+        "detail_lokasi_penjemputan",
+        "ongkos_kirim_normal",
+        "ongkos_kirim_coret",
+        "jarak_tempuh_normal",
+        "jarak_tempuh_optimal",
+        "waktu_tempuh_normal",
+        "waktu_tempuh_optimal",
+        "nama_kota",
+        "id_kota",
+        "id_transaksi",
+        "id_ongkir",
+        "kode_promo",
+        "komisi_promo",
+        "rincian",
+        "diskon_potongan_user",
+        "total",
+        "fee_map",
+        "fee_map_normal",
+        "total_komisi",
+        "komisi_platform",
+        "komisi_driver",
+        "pendapatan_kotor",
+        "pendapatan_bersih",
+        "fee_thread_party",
+        "id_setting_fee",
+        "radius_dispatch",
+        "id_jenis_pembayaran",
+        "nama_jenis_pembayaran",
+        "id_jenis_layanan",
+        "nama_jenis_layanan",
+        "detail_ongkos_kirim",
+        "destinations",
+        "total_destination",
+        "detail_voucher",
+        "distances",
+        "id_promo",
+        "id_owner_nft"
+      ]
+    },
+    "Rincian": {
+      "title": "[Subrequest] Rincian",
+      "example": {
+        "biaya_ongkir_normal": 30750,
+        "biaya_ongkir_minimal": 6700,
+        "biaya_ongkir_dengan_subsidi": 6700,
+        "biaya_ongkir_after_diskon": 29750,
+        "biaya_ongkir_final": 31719,
+        "biaya_layanan": "500",
+        "biaya_tambahan": 0,
+        "pendapatan_normal_driver": 26961,
+        "pendapatan_bersih_platform": 4194,
+        "pendapatan_netto_platform": 4258,
+        "pendapatan_gross_platform": 4758,
+        "potongan_diskon_ongkir_user": 0,
+        "potongan_diskon_belanja_user": 0,
+        "biaya_payment_gateway": 500,
+        "raw_biaya_payment_gateway": 469,
+        "biaya_ongkir_dengan_diskon": 0
+      },
+      "type": "object",
+      "properties": {
+        "biaya_ongkir_normal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biaya_ongkir_minimal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biaya_ongkir_dengan_subsidi": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biaya_ongkir_after_diskon": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biaya_ongkir_final": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biaya_layanan": {
+          "type": "string"
+        },
+        "biaya_tambahan": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pendapatan_normal_driver": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pendapatan_bersih_platform": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pendapatan_netto_platform": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pendapatan_gross_platform": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "potongan_diskon_ongkir_user": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "potongan_diskon_belanja_user": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biaya_payment_gateway": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "raw_biaya_payment_gateway": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "biaya_ongkir_dengan_diskon": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "biaya_ongkir_normal",
+        "biaya_ongkir_minimal",
+        "biaya_ongkir_dengan_subsidi",
+        "biaya_ongkir_after_diskon",
+        "biaya_ongkir_final",
+        "biaya_layanan",
+        "biaya_tambahan",
+        "pendapatan_normal_driver",
+        "pendapatan_bersih_platform",
+        "pendapatan_netto_platform",
+        "pendapatan_gross_platform",
+        "potongan_diskon_ongkir_user",
+        "potongan_diskon_belanja_user",
+        "biaya_payment_gateway",
+        "raw_biaya_payment_gateway",
+        "biaya_ongkir_dengan_diskon"
+      ]
+    },
+    "DetailOngkosKirim": {
+      "title": "[Subrequest] Detail Ongkos Kirim",
+      "example": {
+        "nama_penerima": "Rizky miftaqul",
+        "no_hp_penerima": "089677498927",
+        "titik_perjalanan": "-7.32075,112.7498405",
+        "tipe": "send",
+        "nama_lokasi": "Tenggilis Square M24 No. 1",
+        "alamat_lokasi": "Tenggilis Square M24 No. 1, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60292, Indonesia",
+        "detail_lokasi": "",
+        "jarak_tempuh_normal": 0,
+        "durasi_tempuh_normal": 0,
+        "jenis_barang": "",
+        "id_perjalanan": 1,
+        "starting_point": "-7.32075,112.7498405",
+        "catatan_barang": "",
+        "qty_barang": 0,
+        "titik_pengiriman": "-7.32075,112.7498405",
+        "id_destination": 1,
+        "urutan_pengiriman": 1
+      },
+      "type": "object",
+      "properties": {
+        "nama_penerima": {
+          "type": "string"
+        },
+        "no_hp_penerima": {
+          "type": "string"
+        },
+        "titik_perjalanan": {
+          "type": "string"
+        },
+        "tipe": {
+          "type": "string"
+        },
+        "nama_lokasi": {
+          "type": "string"
+        },
+        "alamat_lokasi": {
+          "type": "string"
+        },
+        "detail_lokasi": {
+          "type": "string"
+        },
+        "jarak_tempuh_normal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "durasi_tempuh_normal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jenis_barang": {
+          "type": "string"
+        },
+        "id_perjalanan": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "starting_point": {
+          "type": "string"
+        },
+        "catatan_barang": {
+          "type": "string"
+        },
+        "qty_barang": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "titik_pengiriman": {
+          "type": "string"
+        },
+        "id_destination": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "urutan_pengiriman": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "nama_penerima",
+        "no_hp_penerima",
+        "titik_perjalanan",
+        "tipe",
+        "nama_lokasi",
+        "alamat_lokasi",
+        "detail_lokasi",
+        "jarak_tempuh_normal",
+        "durasi_tempuh_normal",
+        "jenis_barang",
+        "id_perjalanan",
+        "starting_point",
+        "catatan_barang",
+        "qty_barang",
+        "titik_pengiriman",
+        "id_destination",
+        "urutan_pengiriman"
+      ]
+    },
+    "[400]CheckOngkirKurir1": {
+      "title": "[400] Check Ongkir Kurir",
+      "example": {
+        "message": "origin, destination, nama_kota, nama_lokasi, detail_lokasi, detail_lokasi, id_jenis_layanan are required"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    }
+  },
+  "security": [],
+  "tags": [{
+      "name": "OAuth"
+    },
+    {
+      "name": "Core"
+    }
+  ]
+}
